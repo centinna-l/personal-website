@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jerry Joy- Portfolio</title>
+    <style>
+      /* CSS Styles */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      header {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+      }
+
+      h1 {
+        margin: 0;
+      }
+
+      nav {
+        background-color: #666;
+        padding: 10px;
+        text-align: center;
+      }
+
+      nav a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 10px;
+      }
+
+      section {
+        padding: 20px;
+        margin: 20px;
+        background-color: #f0f0f0;
+      }
+
+      .shimmer {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .shimmer:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          to right,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        animation: shimmerAnimation 1.5s infinite;
+      }
+
+      @keyframes shimmerAnimation {
+        0% {
+          left: -100%;
+        }
+        100% {
+          left: 100%;
+        }
+      }
+
+      footer {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+      }
+      p {
+        text-align: justify;
+      }
+      .center-text {
+        text-align: center;
+      }
+      @keyframes fadeAnimation {
+        0% {
+          transform: scale(0);
+          opacity: 0;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+      #projects li a {
+        display: inline-block;
+        margin: 5px;
+        padding: 10px 20px;
+        background-color: lightslategray;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
+
+      #projects li a span.shimmer-text {
+        position: relative;
+        z-index: 2;
+      }
+
+      #projects li a:hover {
+        background-color: #666;
+      }
+      .contact-icon {
+        height: 10px;
+        display: inline-block;
+        margin-right: 10px;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      /* .profile-pic {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 0 auto;
+        position: relative;
+      } */
+      .profile-pic {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 0 auto;
+        position: relative;
+        transition: transform 0.5s, top 0.5s;
+      }
+
+      .profile-pic img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+      .profile-pic.top-right {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        height: 75px;
+        width: 75px;
+        border-radius: 100%;
+        transform: translateX(50%);
+        margin: 30px;
+      }
+      .profile-pic.animate-top-right {
+        transform: translateX(50%) translateY(0%);
+        top: 20px;
+      }
+
+      /* .profile-pic:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          to right,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        animation: shimmerAnimation 1.5s infinite;
+      } */
+      /* .profile-pic::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          to right,
+          rgba(255, 255, 255, 0.3),
+          rgba(255, 255, 255, 0.8),
+          rgba(255, 255, 255, 0.3)
+        );
+        opacity: 0;
+        animation: shimmerAnimation 1.5s infinite;
+      } */
+      .shimmer:before,
+      .shimmer:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          to right,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        animation: shimmerAnimation 1.5s infinite;
+      }
+
+      .shimmer:after {
+        animation-delay: 0.75s;
+      }
+      .shimmer-text {
+        background: linear-gradient(
+          to right,
+          rgba(255, 255, 255, 0.3),
+          rgba(255, 255, 255, 0.6),
+          rgba(255, 255, 255, 0.3)
+        );
+        animation: shimmerAnimation 1.5s infinite;
+        font-weight: bold;
+        text-shadow: 0 0 3px rgba(255, 255, 255, 0.8);
+      }
+    </style>
+    <script>
+      // JavaScript code for profile picture animation
+      window.addEventListener("scroll", function () {
+        const profilePic = document.querySelector(".profile-pic");
+        const headerHeight = document.querySelector("header").offsetHeight;
+        const scrollTop =
+          window.pageYOffset || document.documentElement.scrollTop;
+
+        if (scrollTop > headerHeight) {
+          profilePic.classList.add("top-right");
+        } else {
+          profilePic.classList.remove("top-right");
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <header>
+      <div class="profile-pic shimmer">
+        <img
+          src="https://scontent.fyhu2-1.fna.fbcdn.net/v/t39.30808-6/323042369_891648095505422_8555272276448334287_n.jpg?_nc_cat=107&cb=99be929b-3346023f&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=tjwrBN7f-asAX8A-2NL&_nc_ht=scontent.fyhu2-1.fna&oh=00_AfBCBE-HblBg5uDpwFz0TrT7Q5Wtxyovzq-HC8zWIizMTQ&oe=648C5703"
+          alt="Profile Picture"
+        />
+      </div>
+      <h1>Jerry Joy</h1>
+      <p class="center-text">
+        Developer | Instructor | UI/UX | Project Management
+      </p>
+    </header>
+
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#blogs">Blogs</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        I am developer and an Instructor with more than 4 years of experience in
+        fullstack development, as well as 4 years experience in mobile
+        application development using React Native as well as flutter. I have
+        worked in Ed-tech, Medical as well as fintech products. I am looking to
+        gain more experience and solve real world problems.
+      </p>
+    </section>
+
+    <!-- <section id="projects">
+      <h2>Projects</h2>
+      <p class="shimmer">
+        My project work is not only limited to Ed-Tech, Medical and Finance
+        Sectors.
+      </p>
+      <button id="showMoreBtn">Show More</button> -->
+    <!-- <script>
+        // JavaScript code for button activity
+        const showMoreBtn = document.getElementById("showMoreBtn");
+        const projectsContent = document.querySelector("#projects p");
+        const initialText = projectsContent.textContent;
+        const additionalText = "Additional project details...";
+        let showMore = false;
+
+        showMoreBtn.addEventListener("click", function () {
+          if (showMore) {
+            projectsContent.textContent = initialText;
+            showMoreBtn.textContent = "Show More";
+            showMore = false;
+          } else {
+            projectsContent.textContent = initialText + " " + additionalText;
+            showMoreBtn.textContent = "Show Less";
+            showMore = true;
+          }
+        });
+      </script> -->
+
+    <!-- </section> -->
+    <section id="projects">
+      <h2>Projects</h2>
+      <p>
+        My Projects are not to limited to Ed-Tech, Medical and Finance Sectors
+      </p>
+      <ol></ol>
+      <button id="showMoreBtn">Show More</button>
+      <script>
+        // JavaScript code for button activity
+        const showMoreBtn = document.getElementById("showMoreBtn");
+        const projectsContent = document.querySelector("#projects ol");
+        const initialItems = projectsContent.innerHTML;
+        const additionalItems =
+          "<li><a href='https://yesmentor.in/'> Yes Mentor - An Ed-Tech application for UPSC Preparation</a></li><li><a href='http://carebro.in/'>Carebro - Your Medibuddy</a></li><li><a href='http://myfinalyst.com/'>MyFinalyst - Track your Tally</a></li>";
+        let showMore = false;
+
+        showMoreBtn.addEventListener("click", function () {
+          if (showMore) {
+            projectsContent.innerHTML = initialItems;
+            showMoreBtn.textContent = "Show More";
+            showMore = false;
+          } else {
+            projectsContent.innerHTML = initialItems + additionalItems;
+            showMoreBtn.textContent = "Show Less";
+            showMore = true;
+          }
+        });
+      </script>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <p class="shimmer">
+        I’m currently working on Node | Ruby on Rails | PGSQL | SQL | MongoDB |
+        Linode | AWS | JAVA | Flutter | React and React Native | Blockchain
+      </p>
+      <p class="shimmer">
+        I’m currently learning Blockchain | Solidity | Smart Contracts
+      </p>
+    </section>
+    <section id="blogs">
+      <h2>Blogs</h2>
+      <div class="blog">
+        <h3>Converting Class Based Components to Functional Comopents</h3>
+        <p>
+          Please find the full link
+          <a
+            class="shimmer-text"
+            href="https://medium.com/@jerryjoy99/converting-class-components-to-functional-components-in-react-native-28c53cc50a4d"
+            >here.</a
+          >
+        </p>
+      </div>
+      <div class="blog">
+        <h3>State Management(Redux) in React Native</h3>
+        <p>
+          Please find the full link
+          <a
+            class="shimmer-text"
+            href="https://medium.com/@jerryjoy99/state-management-redux-in-react-native-in-functional-components-4250e9538bd6"
+            >here.</a
+          >
+        </p>
+      </div>
+    </section>
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>
+        Want to contact me, for a project, cup of coffee, or event just to give
+        me money, just hit me up.
+      </p>
+      <p>
+        <span class="contact-icon">&#9993;</span>
+        <a class="shimmer-text" href="mailto:jerryjoy99@gmail.com"
+          >jerryjoy99@gmail.com</a
+        >
+      </p>
+    </section>
+    <footer>&copy; 2023 Jerry Joy | Web Developer</footer>
+  </body>
+</html>
